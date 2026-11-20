@@ -1,0 +1,250 @@
+/* Sunset Heist — Comic Cover Studio: the editor's own styling.
+   Fonts are local files under app/fonts/ (SIL Open Font License); the page
+   loads nothing from the network. */
+
+@font-face {
+  font-family: 'Bangers';
+  src: url('./fonts/Bangers-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pacifico';
+  src: url('./fonts/Pacifico-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  --ink: #14101c;
+  --paper: #f6f1ea;
+  --panel: #fffdf8;
+  --line: #d8cfc2;
+  --muted: #6b6257;
+  --sun: #ff7a18;
+  --pink: #ff2e88;
+  --gold: #ffd21f;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--ink);
+  color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, sans-serif;
+}
+
+.app {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 22px;
+  min-height: 100vh;
+}
+
+/* ---- Controls column ---- */
+
+.controls {
+  width: 320px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--paper);
+  border: 3px solid #0d0d0d;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.55);
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: 'Bangers', 'Arial Black', sans-serif;
+  font-size: 44px;
+  line-height: 0.95;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ffb400, var(--sun), var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.brand .tag { margin: 6px 0 0; color: var(--muted); }
+
+.steps {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+.steps li {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 4px;
+  border: 2px solid #0d0d0d;
+  border-radius: 8px;
+  background: var(--panel);
+}
+.steps strong {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #0d0d0d;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 2px dashed var(--line);
+}
+.group h2 {
+  margin: 0;
+  font-family: 'Anton', 'Arial Black', sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.group > label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.hint { margin: 0; color: var(--muted); font-size: 12px; font-weight: 400; }
+
+input[type=text] {
+  font: inherit;
+  padding: 8px 10px;
+  border: 2px solid #0d0d0d;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+}
+input[type=range] { width: 100%; accent-color: var(--pink); }
+
+.upload {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  font-weight: 800;
+  border: 2px dashed #0d0d0d;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+.upload input { display: none; }
+
+.row { display: flex; flex-wrap: wrap; gap: 6px; }
+.stack { display: flex; flex-direction: column; gap: 6px; }
+
+.chip, .panel-pick {
+  font: inherit;
+  font-weight: 700;
+  padding: 7px 10px;
+  border: 2px solid #0d0d0d;
+  border-radius: 999px;
+  background: #fff;
+  color: inherit;
+  cursor: pointer;
+}
+.chip.active, .panel-pick.active {
+  background: var(--gold);
+}
+.panel-pick { text-align: left; border-radius: 8px; }
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.thumb {
+  padding: 0;
+  border: 2px solid #0d0d0d;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+}
+.thumb img { display: block; width: 100%; height: 54px; object-fit: cover; }
+.thumb span {
+  display: block;
+  padding: 3px 2px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#export {
+  font: inherit;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 12px;
+  border: 3px solid #0d0d0d;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ffd21f, #ff7a18, #ff2e88);
+  color: #fff;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+  box-shadow: 4px 4px 0 #0d0d0d;
+  cursor: pointer;
+}
+#export:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #0d0d0d; }
+#status { margin: 0; min-height: 1.2em; color: var(--muted); font-size: 12px; }
+
+/* ---- Preview stage ---- */
+
+.stage {
+  flex: 1;
+  min-width: 0;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+#cover {
+  width: 100%;
+  height: auto;
+  border: 3px solid #0d0d0d;
+  border-radius: 6px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.55);
+  background: #2a1052;
+  cursor: crosshair;
+}
+.stage-hint { margin: 0; color: #b9aed0; font-size: 13px; }
+
+/* ---- Screenshot-only cover view ---- */
+
+body.shot-cover { background: #000; }
+body.shot-cover .controls { display: none; }
+body.shot-cover .app { padding: 0; gap: 0; min-height: 0; }
+body.shot-cover .stage { max-width: none; }
+body.shot-cover .stage-hint { display: none; }
+body.shot-cover #cover {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+  background: #000;
+}
